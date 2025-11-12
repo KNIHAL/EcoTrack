@@ -1,0 +1,50 @@
+"use client";
+import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { getUserRole } from "@/lib/firestore";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    const role = await getUserRole(user.uid);
+
+    // ✅ Updated role-based redirect logic
+    if (role === "system-admin") router.push("/dashboard/system-admin/pending-authorities");
+    else if (role === "authority") router.push("/dashboard/authority");
+    else if (role === "staff") router.push("/dashboard/staff");
+    else router.push("/dashboard/citizen");
+  } catch (err) {
+    alert(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+  return (
+    <section className="min-h-screen flex flex-col items-center justify-center bg-green-50 px-4">
+      <h2 className="text-3xl font-bold text-green-700 mb-6">Login</h2>
+      <form onSubmit={handleLogin} className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm space-y-4">
+        <input type="email" placeholder="Email" className="w-full border p-2 rounded text-black" onChange={(e)=>setEmail(e.target.value)} />
+        <input type="password" placeholder="Password" className="w-full border p-2 rounded text-black" onChange={(e)=>setPassword(e.target.value)} />
+        <button type="submit" disabled={loading} className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+          {loading ? "Logging in..." : "Login"}
+        </button>
+        <p className="text-center text-sm text-gray-600">
+          Don’t have an account? <Link href="/register" className="text-green-600">Register</Link>
+        </p>
+      </form>
+    </section>
+  );
+}
