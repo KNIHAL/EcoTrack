@@ -15,46 +15,39 @@ export default function ReportWaste() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = auth.currentUser;
-    if (!user) {
-      alert("Please login to report.");
-      router.push("/login");
-      return;
-    }
+    if (!user) return router.push("/login");
 
     setLoading(true);
+
     try {
       let photoURL = null;
 
-      // ✅ Upload photo if available
       if (photo) {
         const storage = getStorage();
-        const photoRef = ref(storage, `reports/${user.uid}-${Date.now()}`);
-        await uploadBytes(photoRef, photo);
-        photoURL = await getDownloadURL(photoRef);
+        const storageRef = ref(storage, `reports/${user.uid}-${Date.now()}`);
+        await uploadBytes(storageRef, photo);
+        photoURL = await getDownloadURL(storageRef);
       }
 
-      // ✅ Add report to Firestore
       await addReport(user.uid, description, location, photoURL);
-      alert("Report submitted successfully!");
-      setDescription("");
-      setLocation("");
-      setPhoto(null);
+
+      alert("Report submitted!");
       router.push("/dashboard/citizen");
+
     } catch (err) {
-      alert("Error: " + err.message);
-    } finally {
-      setLoading(false);
+      alert(err.message);
     }
+
+    setLoading(false);
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-green-50 px-4 py-8">
+    <section className="min-h-screen bg-green-50 p-6 flex flex-col items-center">
       <h1 className="text-3xl font-bold text-green-700 mb-6">Report Waste 🗑️</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow-md w-full max-w-md space-y-4"
-      >
+      <form onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-xl shadow w-full max-w-md space-y-4">
+
         <textarea
           placeholder="Describe the waste issue..."
           value={description}
@@ -79,11 +72,8 @@ export default function ReportWaste() {
           className="w-full border p-2 rounded bg-gray-50"
         />
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
-        >
+        <button type="submit" disabled={loading}
+          className="w-full bg-green-600 text-white py-2 rounded">
           {loading ? "Submitting..." : "Submit Report"}
         </button>
       </form>

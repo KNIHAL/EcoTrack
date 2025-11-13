@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 
 
 export default function Hero() {
@@ -35,7 +35,9 @@ export default function Hero() {
             Report Waste
           </button>
 
-          <button className="px-6 py-3 border border-green-600 text-green-600 rounded-xl hover:bg-green-50 transition">
+          <button 
+            onClick={() => router.push("/learnMore")}
+            className="px-6 py-3 border border-green-600 text-green-600 rounded-xl hover:bg-green-50 transition">
             Learn More
           </button>
         </div>
@@ -48,11 +50,6 @@ export default function Hero() {
         transition={{ duration: 0.7 }}
         className="mt-10 md:mt-0 md:w-1/2 flex justify-center"
       >
-        <div className="w-72 h-72 md:w-96 md:h-96 bg-green-100 rounded-full flex items-center justify-center">
-          <span className="text-green-600 text-3xl font-semibold">
-            🌍 Eco Scene
-          </span>
-        </div>
       </motion.div>
     </section>
   );
