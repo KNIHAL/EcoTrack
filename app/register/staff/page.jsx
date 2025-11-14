@@ -53,7 +53,7 @@ export default function StaffRegisterPage() {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm space-y-4"
+        className="bg-white p-8 text-black rounded-xl shadow-md w-full max-w-sm space-y-4"
       >
         <input
           name="name"

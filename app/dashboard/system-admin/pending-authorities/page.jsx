@@ -20,7 +20,7 @@ export default function PendingAuthorities() {
       }
 
       // ✅ safe admin email check (case-insensitive + null safe)
-      if (u?.email?.toLowerCase() === "nihalpandey1205@gmail.com") {
+      if (u?.email?.toLowerCase() === "admin@example.com") {
         const pending = await getPendingUsers("authority");
         setAuthorities(pending);
       } else {

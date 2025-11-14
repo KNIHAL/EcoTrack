@@ -31,7 +31,7 @@ export default function AuthorityRegister() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-green-50 px-4">
       <h2 className="text-3xl font-bold text-orange-700 mb-6">Authority Registration</h2>
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm space-y-4">
+      <form onSubmit={handleSubmit} className="bg-white text-black p-8 rounded-xl shadow-md w-full max-w-sm space-y-4">
         <input name="orgName" placeholder="Organization Name" onChange={handleChange} className="w-full border p-2 rounded" />
         <input name="orgAddress" placeholder="Organization Address" onChange={handleChange} className="w-full border p-2 rounded" />
         <input name="contact" placeholder="Contact Number" onChange={handleChange} className="w-full border p-2 rounded" />

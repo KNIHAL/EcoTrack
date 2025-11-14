@@ -46,7 +46,7 @@ export default function ReportWaste() {
       <h1 className="text-3xl font-bold text-green-700 mb-6">Report Waste 🗑️</h1>
 
       <form onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow w-full max-w-md space-y-4">
+        className="bg-white text-black p-6 rounded-xl shadow w-full max-w-md space-y-4">
 
         <textarea
           placeholder="Describe the waste issue..."

@@ -50,6 +50,11 @@ export default function Hero() {
         transition={{ duration: 0.7 }}
         className="mt-10 md:mt-0 md:w-1/2 flex justify-center"
       >
+        <img
+        src="https://png.pngtree.com/png-clipart/20231003/original/pngtree-nature-with-global-png-image_13244888.png"
+        alt="EcoTrack Earth"
+      />
+
       </motion.div>
     </section>
   );
