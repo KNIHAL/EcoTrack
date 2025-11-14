@@ -8,6 +8,11 @@ export default function AboutPage() {
         EcoTrack allows citizens to report waste, staff to resolve issues, and
         authorities to manage city cleanliness with a clean workflow.
       </p>
+      <p className="max-w-3xl mx-auto text-center text-gray-700 leading-relaxed mt-4">
+        Our mission is to empower communities to create cleaner, greener urban
+        environments through technology and collaboration.
+        Join us in making a positive impact on our planet, one report at a time!
+      </p>
     </main>
   );
 }

@@ -5,7 +5,7 @@ export default function ContactPage() {
         Contact Us
       </h1>
 
-      <form className="max-w-xl mx-auto grid gap-4 p-6 rounded-xl shadow bg-green-50">
+      <form className="max-w-xl text-black mx-auto grid gap-4 p-6 rounded-xl shadow bg-green-50">
         <input className="p-3 rounded border" placeholder="Your Name" />
         <input className="p-3 rounded border" placeholder="Email Address" />
         <textarea className="p-3 rounded border" rows={4} placeholder="Message"></textarea>
