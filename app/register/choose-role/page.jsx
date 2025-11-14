@@ -1,12 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
-import ChooseRoleClient from "./ChooseRoleClient";
+import ChooseRoleInner from "./role-inner";
 
 export default function ChooseRolePage() {
   return (
-    <Suspense fallback={<div className="p-6">Loading...</div>}>
-      <ChooseRoleClient />
+    <Suspense fallback={<div>Loading...</div>}>
+      <ChooseRoleInner />
     </Suspense>
   );
 }
