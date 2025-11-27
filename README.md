@@ -75,7 +75,7 @@ This project was developed as a full‑stack, AI‑assisted solution demonstrati
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ecotrack.git
+git clone https://github.com/KNIHAL/ecotrack.git
 cd ecotrack
 ```
 
