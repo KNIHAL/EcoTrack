@@ -5,13 +5,6 @@ import { createUserDocument } from "@/lib/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function StaffRegisterPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <StaffRegister />
-    </Suspense>
-  );
-}
 
 export default function StaffRegisterPage() {
   const params = useSearchParams();
